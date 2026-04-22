@@ -1,0 +1,58 @@
+<h2>How should the application form be structured?</h2>
+<p class="subtitle">A full government form has 15–20 fields. How should residents move through it?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Multi-Step Wizard</h3>
+      <p>Form broken into <strong>4 focused steps</strong> with a progress bar at the top. One section at a time — less overwhelming, fewer mistakes.</p>
+      <br>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div style="flex:1;background:rgba(255,255,255,0.15);border-radius:6px;padding:8px 10px;font-size:12px;text-align:center;border:1px solid rgba(255,255,255,0.3);">
+          <div style="font-weight:600;color:#fff;margin-bottom:2px;">Step 1</div>
+          <div style="color:#aaa;">Business Info</div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;font-size:12px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-weight:600;color:#fff;margin-bottom:2px;">Step 2</div>
+          <div style="color:#aaa;">Owner & Contact</div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;font-size:12px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-weight:600;color:#fff;margin-bottom:2px;">Step 3</div>
+          <div style="color:#aaa;">Legal & Tax</div>
+        </div>
+        <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:6px;padding:8px 10px;font-size:12px;text-align:center;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-weight:600;color:#fff;margin-bottom:2px;">Step 4</div>
+          <div style="color:#aaa;">Review & Submit</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px;font-size:13px;color:#aaa;">
+        <strong style="color:#fff;">Best for:</strong> Reduced cognitive load. Users can save progress per step. Feels modern.
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Single Long Page</h3>
+      <p>All fields on one scrollable page, grouped into labeled sections. Residents can see the full scope upfront and fill at their own pace.</p>
+      <br>
+      <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;">
+        <div style="color:#ccc;margin-bottom:6px;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;">Business Information</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div style="height:28px;background:rgba(255,255,255,0.08);border-radius:4px;flex:1;min-width:100px;"></div>
+          <div style="height:28px;background:rgba(255,255,255,0.08);border-radius:4px;flex:1;min-width:100px;"></div>
+        </div>
+        <div style="color:#ccc;margin:10px 0 6px;font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;">Legal & Tax</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <div style="height:28px;background:rgba(255,255,255,0.08);border-radius:4px;flex:1;min-width:100px;"></div>
+          <div style="height:28px;background:rgba(255,255,255,0.08);border-radius:4px;flex:1;min-width:100px;"></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px;font-size:13px;color:#aaa;">
+        <strong style="color:#fff;">Best for:</strong> Power users who want to fill everything at once. Simpler to build and validate.
+      </div>
+    </div>
+  </div>
+</div>

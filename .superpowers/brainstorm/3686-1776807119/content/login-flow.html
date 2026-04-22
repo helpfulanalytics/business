@@ -1,0 +1,40 @@
+<h2>How should the login experience work?</h2>
+<p class="subtitle">This shapes the whole site structure. Where does a resident go when they click "Sign In"?</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Modal Overlay on Landing Page</h3>
+      <p>Clicking "Sign In" opens a glass-panel login form centered over the hero video. The video keeps playing behind it. One seamless experience — no page navigation.</p>
+      <br>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px;font-size:13px;color:#aaa;">
+        <strong style="color:#fff;">Best for:</strong> Polished, app-like feel. The video stays alive and the page never reloads.
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Dedicated Login Page</h3>
+      <p>Clicking "Sign In" navigates to <code>/login</code> — a full-screen page with its own video background and centered login card. Clean separation of concerns.</p>
+      <br>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px;font-size:13px;color:#aaa;">
+        <strong style="color:#fff;">Best for:</strong> Easier to deep-link, bookmark, and share. More government-portal conventional.
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Inline on Landing Page (Split Layout)</h3>
+      <p>The hero section itself has two columns — left side is the messaging, right side has the login form built directly into the page. No click needed to see the form.</p>
+      <br>
+      <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:12px;font-size:13px;color:#aaa;">
+        <strong style="color:#fff;">Best for:</strong> Maximum conversion — login is always visible. Common for portals where login is the primary action.
+      </div>
+    </div>
+  </div>
+</div>
