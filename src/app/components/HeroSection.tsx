@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const VIDEO_URL =
+const DEFAULT_VIDEO_URL =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260403_050628_c4e32401-fab4-4a27-b7a8-6e9291cd5959.mp4";
 
 const HEADING_TEXT = "Mobile's Official\nBusiness License Portal";
@@ -79,20 +79,56 @@ function AnimatedHeading({ text }: { text: string }) {
 }
 
 export default function HeroSection() {
+  const videoUrl =
+    process.env.NEXT_PUBLIC_HERO_VIDEO_URL ||
+    "/media/hero.mp4";
+
+  const posterUrl = "/Gemini_Generated_Image_heif74heif74heif.png";
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setVideoReady(true), 2500);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden bg-black">
+      {/* Poster shown until video can play */}
+      <div
+        className="absolute inset-0 bg-black"
+        style={{
+          backgroundImage: `url(${posterUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: videoReady ? 0 : 1,
+          transition: "opacity 350ms ease",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Video background - no overlays */}
       <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src={VIDEO_URL}
+        className="hero-video absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
-      />
+        preload="auto"
+        poster={posterUrl}
+        onCanPlay={() => setVideoReady(true)}
+      >
+        <source src={videoUrl} type="video/mp4" />
+        <source src={DEFAULT_VIDEO_URL} type="video/mp4" />
+      </video>
 
       {/* Content layer */}
-      <div className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-16">
+      <div
+        className="relative z-10 flex flex-col h-full px-6 md:px-12 lg:px-16"
+        style={{
+          opacity: videoReady ? 1 : 0,
+          transition: "opacity 250ms ease",
+        }}
+      >
         {/* Navbar */}
         <div className="pt-6">
           <nav className="liquid-glass rounded-xl px-4 py-2 flex items-center justify-between">
