@@ -1,4 +1,7 @@
 import { StepProps, WizardFormData } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 interface Doc { label: string; link?: string; linkText?: string; phone?: string; }
 
@@ -53,9 +56,11 @@ function DocRow({ doc }: { doc: Doc }) {
 
 export default function StepDocumentChecklist({ data, onChange, onNext, onBack, onSaveExit }: StepProps) {
   const { always, conditional } = computeDocs(data);
+  const [error, setError] = useState<string | null>(null);
 
   function validate() {
-    if (!data.documentsAcknowledged) { alert("Please acknowledge the required documents checklist."); return; }
+    if (!data.documentsAcknowledged) { setError("Please acknowledge the required documents checklist."); return; }
+    setError(null);
     onNext();
   }
 
@@ -115,6 +120,15 @@ export default function StepDocumentChecklist({ data, onChange, onNext, onBack, 
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="warning">
+              <AlertTitle>Please fix this</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );

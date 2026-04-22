@@ -1,4 +1,7 @@
 import { StepProps } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 const STRUCTURES = ["Sole Proprietorship", "Limited Liability Company (LLC)", "Corporation", "Professional Association", "Other"];
 const LOCATIONS  = ["City Limits", "Police Jurisdiction (PJ)", "Outside City & PJ"];
@@ -15,20 +18,22 @@ function FieldGrid({ children, cols = 2 }: { children: React.ReactNode; cols?: n
 
 export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSaveExit }: StepProps) {
   const isSoleProp = data.businessStructure === "Sole Proprietorship";
+  const [error, setError] = useState<string | null>(null);
 
   function validate() {
-    if (!data.applicationDate) { alert("Please enter the application date."); return; }
-    if (!data.startDate) { alert("Please enter the business start date."); return; }
-    if (!data.businessLegalName.trim()) { alert("Please enter the business legal name."); return; }
-    if (!data.businessStructure) { alert("Please select a business structure."); return; }
-    if (data.businessStructure === "Other" && !data.businessStructureOther.trim()) { alert("Please describe the business structure."); return; }
-    if (!data.physicalLocation) { alert("Please select the physical location type."); return; }
-    if (!data.physStreet.trim() || !data.physCity.trim() || !data.physZip.trim()) { alert("Please complete the physical address."); return; }
-    if (!data.companyPhone.trim()) { alert("Please enter a company phone number."); return; }
-    if (!data.numEmployees.trim()) { alert("Please enter the number of employees."); return; }
+    if (!data.applicationDate) { setError("Please enter the application date."); return; }
+    if (!data.startDate) { setError("Please enter the business start date."); return; }
+    if (!data.businessLegalName.trim()) { setError("Please enter the business legal name."); return; }
+    if (!data.businessStructure) { setError("Please select a business structure."); return; }
+    if (data.businessStructure === "Other" && !data.businessStructureOther.trim()) { setError("Please describe the business structure."); return; }
+    if (!data.physicalLocation) { setError("Please select the physical location type."); return; }
+    if (!data.physStreet.trim() || !data.physCity.trim() || !data.physZip.trim()) { setError("Please complete the physical address."); return; }
+    if (!data.companyPhone.trim()) { setError("Please enter a company phone number."); return; }
+    if (!data.numEmployees.trim()) { setError("Please enter the number of employees."); return; }
     if (!data.contactName.trim() || !data.contactTitle.trim() || !data.contactPhone.trim() || !data.contactEmail.trim()) {
-      alert("Please complete all Business Contact Person fields."); return;
+      setError("Please complete all Business Contact Person fields."); return;
     }
+    setError(null);
     onNext();
   }
 
@@ -220,6 +225,15 @@ export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSav
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="warning">
+              <AlertTitle>Please fix this</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );

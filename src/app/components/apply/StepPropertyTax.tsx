@@ -1,4 +1,7 @@
 import { StepProps } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 const TAX_TYPES = ["Sales Tax","Sellers Use","Consumer Use","Lease / Rental (Tangible Property)","Lodging","Wine Tax","Tobacco Tax","Liquor Purchase Tax"];
 const TAX_FREQS = ["Monthly","Quarterly","Semi-Annually","Annually"];
@@ -21,6 +24,7 @@ function YesNoChoice({ value, onChange }: { value: string; onChange: (v: string)
 export default function StepPropertyTax({ data, onChange, onNext, onBack, onSaveExit }: StepProps) {
   const isRenting = data.propertyOwnership === "I rent / lease the property";
   const isRentalRes = (data.businessTypes ?? []).includes("Rental — Residential");
+  const [error, setError] = useState<string | null>(null);
 
   function toggleTax(type: string) {
     const cur = data.taxTypes;
@@ -33,12 +37,13 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
   function removeRentalAddr(idx: number) { onChange("rentalAddresses", data.rentalAddresses.filter((_, i) => i !== idx)); }
 
   function validate() {
-    if (!data.propertyOwnership) { alert("Please select property ownership type."); return; }
+    if (!data.propertyOwnership) { setError("Please select property ownership type."); return; }
     if (isRenting && (!data.propOwnerName.trim() || !data.propOwnerStreet.trim() || !data.propOwnerCity.trim() || !data.propOwnerZip.trim() || !data.propOwnerPhone.trim())) {
-      alert("Please complete all required property owner fields."); return;
+      setError("Please complete all required property owner fields."); return;
     }
-    if (data.taxTypes.length === 0) { alert("Please select at least one business tax type."); return; }
-    if (!data.taxFrequency) { alert("Please select a tax filing frequency."); return; }
+    if (data.taxTypes.length === 0) { setError("Please select at least one business tax type."); return; }
+    if (!data.taxFrequency) { setError("Please select a tax filing frequency."); return; }
+    setError(null);
     onNext();
   }
 
@@ -166,6 +171,15 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="warning">
+              <AlertTitle>Please fix this</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );

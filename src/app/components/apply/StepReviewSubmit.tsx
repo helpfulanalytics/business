@@ -1,4 +1,7 @@
 import { StepProps } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 function Row({ label, value }: { label: string; value: string | boolean | string[] | undefined }) {
   if (value === undefined || value === null || value === "") return null;
@@ -31,12 +34,15 @@ function SectionBlock({ title, step, onEdit, children }: { title: string; step: 
 }
 
 export default function StepReviewSubmit({ data, onChange, onNext, onBack, onSaveExit, goToStep }: StepProps) {
+  const [error, setError] = useState<string | null>(null);
+
   function validate() {
-    if (!data.printedName.trim() || !data.printedTitle.trim()) { alert("Please enter your printed name and title."); return; }
-    if (!data.signature.trim()) { alert("Please enter your signature."); return; }
-    if (!data.certDate) { alert("Please enter the certification date."); return; }
-    if (!data.understand60Day) { alert("Please acknowledge the 60-Day Affidavit requirement."); return; }
-    if (!data.understandExpiry) { alert("Please acknowledge the license expiry requirement."); return; }
+    if (!data.printedName.trim() || !data.printedTitle.trim()) { setError("Please enter your printed name and title."); return; }
+    if (!data.signature.trim()) { setError("Please enter your signature."); return; }
+    if (!data.certDate) { setError("Please enter the certification date."); return; }
+    if (!data.understand60Day) { setError("Please acknowledge the 60-Day Affidavit requirement."); return; }
+    if (!data.understandExpiry) { setError("Please acknowledge the license expiry requirement."); return; }
+    setError(null);
     onNext();
   }
 
@@ -144,6 +150,15 @@ export default function StepReviewSubmit({ data, onChange, onNext, onBack, onSav
             Submit Application →
           </button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="destructive">
+              <AlertTitle>Can’t submit yet</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );

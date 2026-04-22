@@ -1,4 +1,7 @@
 import { Owner, StepProps, defaultOwner } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 const FORM_A_DOCS = [
   "Alabama Driver's License","Alabama Identification Card","Birth Certificate (U.S.)","U.S. Passport or Passport Card",
@@ -156,6 +159,8 @@ function OwnerCard({ owner, index, onOwnerChange, canRemove, onRemove }: {
 }
 
 export default function StepOwnerInfo({ data, onChange, onNext, onBack, onSaveExit }: StepProps) {
+  const [error, setError] = useState<string | null>(null);
+
   function handleOwnerChange(idx: number, field: keyof Owner, value: string) {
     onChange("owners", data.owners.map((o, i) => i === idx ? { ...o, [field]: value } : o));
   }
@@ -171,13 +176,14 @@ export default function StepOwnerInfo({ data, onChange, onNext, onBack, onSaveEx
     for (let i = 0; i < data.owners.length; i++) {
       const o = data.owners[i];
       if (!o.fullName.trim() || !o.title.trim() || !o.ssn.trim() || !o.dlState.trim() || !o.dlNumber.trim() || !o.phone.trim() || !o.email.trim() || !o.streetAddress.trim() || !o.city.trim() || !o.state.trim() || !o.zip.trim() || !o.dob) {
-        alert(`Complete all required fields for Owner #${i + 1}.`); return;
+        setError(`Complete all required fields for Owner #${i + 1}.`); return;
       }
-      if (!o.citizenshipForm) { alert(`Select a Citizenship Form for Owner #${i + 1}.`); return; }
-      if (o.citizenshipForm === "A" && (!o.formADocType || !o.formASignature.trim() || !o.formADate)) { alert(`Complete Citizenship Form A for Owner #${i + 1}.`); return; }
-      if (o.citizenshipForm === "B" && (!o.aNumber.trim() || !o.formBDocType || !o.formBSignature.trim() || !o.formBDate)) { alert(`Complete Citizenship Form B for Owner #${i + 1}.`); return; }
+      if (!o.citizenshipForm) { setError(`Select a Citizenship Form for Owner #${i + 1}.`); return; }
+      if (o.citizenshipForm === "A" && (!o.formADocType || !o.formASignature.trim() || !o.formADate)) { setError(`Complete Citizenship Form A for Owner #${i + 1}.`); return; }
+      if (o.citizenshipForm === "B" && (!o.aNumber.trim() || !o.formBDocType || !o.formBSignature.trim() || !o.formBDate)) { setError(`Complete Citizenship Form B for Owner #${i + 1}.`); return; }
     }
-    if (!data.hasRelatedBusiness) { alert("Please answer the related business interests question."); return; }
+    if (!data.hasRelatedBusiness) { setError("Please answer the related business interests question."); return; }
+    setError(null);
     onNext();
   }
 
@@ -238,6 +244,15 @@ export default function StepOwnerInfo({ data, onChange, onNext, onBack, onSaveEx
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="warning">
+              <AlertTitle>Please fix this</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );

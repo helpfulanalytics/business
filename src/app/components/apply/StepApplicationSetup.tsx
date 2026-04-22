@@ -1,4 +1,7 @@
 import { StepProps } from "./types";
+import { useState } from "react";
+
+import { Alert, AlertDescription, AlertTitle } from "@/components/reui/alert";
 
 const APPLICATION_TYPES = [
   "New Business",
@@ -56,6 +59,7 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
   const hasRestaurant = data.businessTypes.includes("Restaurant / Bar / Lounge");
   const hasConvenience = data.businessTypes.includes("Convenience / Grocery Store");
   const hasHotel = data.businessTypes.includes("Hotel / Motel");
+  const [error, setError] = useState<string | null>(null);
 
   function toggleType(type: string) {
     const cur = data.businessTypes;
@@ -63,12 +67,13 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
   }
 
   function validate() {
-    if (!data.applicationType) { alert("Please select an Application Type."); return; }
-    if (data.applicationType === "Other" && !data.applicationTypeOther.trim()) { alert("Please describe the application type."); return; }
-    if (!data.businessOperatedFrom) { alert("Please select where the business is operated from."); return; }
-    if (data.businessTypes.length === 0) { alert("Please select at least one business type."); return; }
-    if (data.businessTypes.includes("Other") && !data.businessTypeOther.trim()) { alert("Please describe the other business type."); return; }
-    if (data.detailedExplanation.trim().length < 50) { alert("Please provide a detailed explanation of at least 50 characters."); return; }
+    if (!data.applicationType) { setError("Please select an Application Type."); return; }
+    if (data.applicationType === "Other" && !data.applicationTypeOther.trim()) { setError("Please describe the application type."); return; }
+    if (!data.businessOperatedFrom) { setError("Please select where the business is operated from."); return; }
+    if (data.businessTypes.length === 0) { setError("Please select at least one business type."); return; }
+    if (data.businessTypes.includes("Other") && !data.businessTypeOther.trim()) { setError("Please describe the other business type."); return; }
+    if (data.detailedExplanation.trim().length < 50) { setError("Please provide a detailed explanation of at least 50 characters."); return; }
+    setError(null);
     onNext();
   }
 
@@ -297,6 +302,15 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
             Continue →
           </button>
         </div>
+
+        {error && (
+          <div style={{ marginTop: "1rem" }}>
+            <Alert variant="warning">
+              <AlertTitle>Please fix this</AlertTitle>
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          </div>
+        )}
       </div>
     </div>
   );
