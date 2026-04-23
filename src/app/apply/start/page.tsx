@@ -26,13 +26,11 @@ export default function ApplyStartPage() {
   const [submitting, setSubmitting] = useState(false);
 
   const errors = useMemo(() => {
-    const e: { fullName?: string; contact?: string } = {};
+    const e: { fullName?: string; email?: string } = {};
     if (!fullName.trim()) e.fullName = "Full name is required.";
-    const hasEmail = Boolean(email.trim());
-    const hasPhone = Boolean(phone.trim());
-    if (!hasEmail && !hasPhone) e.contact = "Please provide an email or phone number.";
+    if (!email.trim()) e.email = "Email address is required.";
     return e;
-  }, [fullName, email, phone]);
+  }, [fullName, email]);
 
   const canSubmit = Object.keys(errors).length === 0 && !submitting;
 
@@ -118,7 +116,7 @@ export default function ApplyStartPage() {
 
               <div style={{ display: "grid", gap: "0.75rem" }}>
                 <div>
-                  <label className="form-label" htmlFor="email">Email (optional)</label>
+                  <label className="form-label" htmlFor="email">Email</label>
                   <input
                     id="email"
                     className="form-input"
@@ -127,11 +125,17 @@ export default function ApplyStartPage() {
                     onBlur={() => setTouched(true)}
                     autoComplete="email"
                     inputMode="email"
+                    required
                   />
+                {touched && errors.email && (
+                  <div style={{ marginTop: "0.4rem", fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--error)" }}>
+                    {errors.email}
+                  </div>
+                )}
                 </div>
 
                 <div>
-                  <label className="form-label" htmlFor="phone">Phone (optional)</label>
+                  <label className="form-label" htmlFor="phone">Phone number <span style={{ fontWeight: 400, color: "var(--ink-2)" }}>(optional)</span></label>
                   <input
                     id="phone"
                     className="form-input"
@@ -143,11 +147,7 @@ export default function ApplyStartPage() {
                   />
                 </div>
 
-                {touched && errors.contact && (
-                  <div style={{ fontFamily: "var(--font-ui)", fontSize: "0.85rem", color: "var(--error)" }}>
-                    {errors.contact}
-                  </div>
-                )}
+
               </div>
 
               <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.25rem", flexWrap: "wrap" }}>
