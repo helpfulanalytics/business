@@ -9,7 +9,7 @@ export default function AppHeader() {
 
   function handleSignOut() {
     logout();
-    router.push("/login");
+    router.push("/");
   }
 
   return (
@@ -81,37 +81,39 @@ export default function AppHeader() {
         {/* Right — user + sign out */}
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
           {user && (
-            <span
-              style={{
-                fontFamily: "var(--font-ui), sans-serif",
-                fontSize: "0.8rem",
-                color: "rgba(255,255,255,0.55)",
-                letterSpacing: "0.01em",
-              }}
-              className="hidden sm:block"
-            >
-              {user.name}
-            </span>
+            <>
+              <span
+                style={{
+                  fontFamily: "var(--font-ui), sans-serif",
+                  fontSize: "0.8rem",
+                  color: "rgba(255,255,255,0.55)",
+                  letterSpacing: "0.01em",
+                }}
+                className="hidden sm:block"
+              >
+                {user.name}
+              </span>
+              <button
+                onClick={handleSignOut}
+                style={{
+                  fontFamily: "var(--font-ui), sans-serif",
+                  fontSize: "0.78rem",
+                  color: "rgba(255,255,255,0.7)",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  borderRadius: "4px",
+                  padding: "0.3rem 0.75rem",
+                  cursor: "pointer",
+                  letterSpacing: "0.03em",
+                  transition: "background 0.15s, color 0.15s",
+                }}
+                onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "rgba(255,255,255,0.12)"; (e.target as HTMLButtonElement).style.color = "#fff"; }}
+                onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)"; (e.target as HTMLButtonElement).style.color = "rgba(255,255,255,0.7)"; }}
+              >
+                Sign Out
+              </button>
+            </>
           )}
-          <button
-            onClick={handleSignOut}
-            style={{
-              fontFamily: "var(--font-ui), sans-serif",
-              fontSize: "0.78rem",
-              color: "rgba(255,255,255,0.7)",
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              borderRadius: "4px",
-              padding: "0.3rem 0.75rem",
-              cursor: "pointer",
-              letterSpacing: "0.03em",
-              transition: "background 0.15s, color 0.15s",
-            }}
-            onMouseEnter={e => { (e.target as HTMLButtonElement).style.background = "rgba(255,255,255,0.12)"; (e.target as HTMLButtonElement).style.color = "#fff"; }}
-            onMouseLeave={e => { (e.target as HTMLButtonElement).style.background = "rgba(255,255,255,0.06)"; (e.target as HTMLButtonElement).style.color = "rgba(255,255,255,0.7)"; }}
-          >
-            Sign Out
-          </button>
         </div>
       </div>
     </header>

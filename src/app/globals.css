@@ -240,8 +240,39 @@ body {
   box-shadow: 0 0 0 3px rgba(0,102,204,0.13), var(--shadow-xs);
   background: #fafcff;
 }
-.form-input::placeholder { color: #b0b7c3; }
+.form-input::placeholder { color: rgba(55,65,81,0.55); }
 .form-input[readonly] { background: #f8f9fb; color: var(--muted); cursor: default; }
+
+/* ── Hero CTA (distinct glass) ──────────────────────────────────────────── */
+.cta-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.9rem;
+  font-family: var(--font-ui), sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(255,255,255,0.22);
+  background: linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.10));
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.24), inset 0 1px 0 rgba(255,255,255,0.16);
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  user-select: none;
+  text-decoration: none;
+}
+.cta-glass:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.34);
+  background: linear-gradient(180deg, rgba(255,255,255,0.26), rgba(255,255,255,0.12));
+  box-shadow: 0 14px 34px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.cta-glass:active {
+  transform: translateY(0px);
+}
 
 /* ── Choice card — styled radio/checkbox wrappers ───────────────────────── */
 .choice-card {

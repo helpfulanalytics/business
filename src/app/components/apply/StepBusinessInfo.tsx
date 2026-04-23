@@ -45,7 +45,7 @@ export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSav
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>2</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Business Information</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>Legal and contact details for your business.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>Legal and contact details for your business.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem", display: "flex", flexDirection: "column", gap: "0" }}>
@@ -69,12 +69,12 @@ export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSav
           <div>
             <label className="form-label" htmlFor="legal-name">Legal Name<Req /></label>
             <input id="legal-name" type="text" className="form-input" value={data.businessLegalName} onChange={e => onChange("businessLegalName", e.target.value)} />
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "0.25rem" }}>Must match Alabama Secretary of State registration exactly.</p>
+            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted-foreground)", marginTop: "0.25rem" }}>Must match Alabama Secretary of State registration exactly.</p>
           </div>
           <div>
             <label className="form-label" htmlFor="trade-name">Trade Name / DBA</label>
             <input id="trade-name" type="text" className="form-input" value={data.tradeName} onChange={e => onChange("tradeName", e.target.value)} />
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "0.25rem" }}>Leave blank if same as legal name.</p>
+            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted-foreground)", marginTop: "0.25rem" }}>Leave blank if same as legal name.</p>
           </div>
         </FieldGrid>
 
@@ -102,7 +102,7 @@ export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSav
             <div>
               <label className="form-label" htmlFor="fein">Federal Tax ID (FEIN)</label>
               <input id="fein" type="text" className="form-input" placeholder="XX-XXXXXXX" value={data.fein} onChange={e => onChange("fein", e.target.value)} />
-              <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted)", marginTop: "0.25rem" }}>Obtain at irs.gov if you don't have one.</p>
+              <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", color: "var(--muted-foreground)", marginTop: "0.25rem" }}>Obtain at irs.gov if you don't have one.</p>
             </div>
           )}
           <div>
@@ -221,7 +221,7 @@ export default function StepBusinessInfo({ data, onChange, onNext, onBack, onSav
         <div className="step-footer">
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
             <button type="button" onClick={onBack} className="btn-secondary">← Back</button>
-            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
+            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>

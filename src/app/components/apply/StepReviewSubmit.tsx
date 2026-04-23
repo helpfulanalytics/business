@@ -12,7 +12,7 @@ function Row({ label, value }: { label: string; value: string | boolean | string
   if (!display.trim()) return null;
   return (
     <div style={{ display: "flex", gap: "1rem", padding: "0.4rem 0", borderBottom: "1px solid var(--border-lt)", fontFamily: "var(--font-ui)", fontSize: "0.825rem" }}>
-      <span style={{ width: "10rem", flexShrink: 0, color: "var(--muted)", letterSpacing: "0.01em" }}>{label}</span>
+      <span style={{ width: "10rem", flexShrink: 0, color: "var(--muted-foreground)", letterSpacing: "0.01em" }}>{label}</span>
       <span style={{ color: "var(--ink)", flex: 1 }}>{display}</span>
     </div>
   );
@@ -53,7 +53,7 @@ export default function StepReviewSubmit({ data, onChange, onNext, onBack, onSav
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>6</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Review &amp; Submit</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>Review your application, sign, and submit.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>Review your application, sign, and submit.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem" }}>

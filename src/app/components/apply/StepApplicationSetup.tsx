@@ -86,7 +86,7 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>1</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Application Setup</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>Tell us the type and nature of this application.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>Tell us the type and nature of this application.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem" }}>
@@ -122,7 +122,7 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
 
         {/* Business Types */}
         <div className="section-header">Description / Type<Req /></div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "0.625rem" }}>Select all that apply.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted-foreground)", marginBottom: "0.625rem" }}>Select all that apply.</p>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.375rem" }}>
           {BUSINESS_TYPES.map(type => (
             <label key={type} className="choice-card">
@@ -141,15 +141,16 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
 
         {/* Detailed Explanation */}
         <div className="section-header">Detailed Explanation of Business Activity<Req /></div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "0.5rem" }}>Describe your specific products or services, target customers, and day-to-day operations.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted-foreground)", marginBottom: "0.5rem" }}>Describe your specific products or services, target customers, and day-to-day operations.</p>
         <textarea
           className="form-input"
           rows={4}
           value={data.detailedExplanation}
           onChange={e => onChange("detailedExplanation", e.target.value)}
+          placeholder="Describe your specific products or services, target customers, and day-to-day operations…"
           style={{ resize: "vertical", fontFamily: "var(--font-ui), sans-serif" }}
         />
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", marginTop: "0.375rem", color: data.detailedExplanation.length >= 50 ? "var(--success)" : "var(--muted)" }}>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.72rem", marginTop: "0.375rem", color: data.detailedExplanation.length >= 50 ? "var(--success)" : "var(--muted-foreground)" }}>
           {data.detailedExplanation.length < 50
             ? `${50 - data.detailedExplanation.length} more characters required`
             : `✓ ${data.detailedExplanation.length} characters`}
@@ -295,7 +296,7 @@ export default function StepApplicationSetup({ data, onChange, onNext, onSaveExi
 
         {/* Footer */}
         <div className="step-footer">
-          <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)", padding: "0.375rem 0", letterSpacing: "0.01em" }}>
+          <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)", padding: "0.375rem 0", letterSpacing: "0.01em" }}>
             Save &amp; Exit
           </button>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>

@@ -6,6 +6,7 @@ type DraftLead = {
   id: string;
   step: number;
   updatedAt: string;
+  fullName?: string;
   businessLegalName?: string;
   tradeName?: string;
   businessStructure?: string;
@@ -67,6 +68,7 @@ export async function POST(req: Request) {
     id: String(body.id),
     step: Number(body.step || 1),
     updatedAt: String(body.updatedAt || new Date().toISOString()),
+    fullName: String(body.fullName || ""),
     businessLegalName: String(body.businessLegalName || ""),
     tradeName: String(body.tradeName || ""),
     businessStructure: String(body.businessStructure || ""),

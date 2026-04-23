@@ -54,7 +54,7 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>4</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Property &amp; Tax Information</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>Your property arrangement and tax obligations.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>Your property arrangement and tax obligations.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem" }}>
@@ -129,7 +129,7 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
         {isRentalRes && (
           <div style={{ marginTop: "1rem" }}>
             <div className="section-header">Rental Property Addresses</div>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "0.625rem" }}>List all rental property addresses within City Limits &amp; Police Jurisdiction.</p>
+            <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted-foreground)", marginBottom: "0.625rem" }}>List all rental property addresses within City Limits &amp; Police Jurisdiction.</p>
             {data.rentalAddresses.map((ra, idx) => (
               <div key={idx} style={{ display: "flex", gap: "0.5rem", marginBottom: "0.5rem" }}>
                 <input type="text" className="form-input" placeholder="Full address" value={ra.address} onChange={e => updateRentalAddr(idx, e.target.value)} />
@@ -142,7 +142,7 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
 
         {/* Tax Types */}
         <div className="section-header">Business Tax Type<Req /></div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "0.625rem" }}>Select all that apply.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted-foreground)", marginBottom: "0.625rem" }}>Select all that apply.</p>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.375rem" }}>
           {TAX_TYPES.map(type => (
             <label key={type} className="choice-card">
@@ -154,7 +154,7 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
 
         {/* Frequency */}
         <div className="section-header">Tax Filing Frequency<Req /></div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted)", marginBottom: "0.625rem" }}>Must match your Alabama Department of Revenue registration.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.78rem", color: "var(--muted-foreground)", marginBottom: "0.625rem" }}>Must match your Alabama Department of Revenue registration.</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "0.375rem" }}>
           {TAX_FREQS.map(freq => (
             <label key={freq} className="choice-card" style={{ flexDirection: "column", alignItems: "center", textAlign: "center", padding: "0.75rem 0.375rem", gap: "4px" }}>
@@ -167,7 +167,7 @@ export default function StepPropertyTax({ data, onChange, onNext, onBack, onSave
         <div className="step-footer">
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
             <button type="button" onClick={onBack} className="btn-secondary">← Back</button>
-            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
+            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>

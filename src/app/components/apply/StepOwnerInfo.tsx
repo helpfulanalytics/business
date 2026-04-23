@@ -91,7 +91,7 @@ function OwnerCard({ owner, index, onOwnerChange, canRemove, onRemove }: {
 
         {/* Citizenship */}
         <div>
-          <p style={{ fontFamily: "var(--font-ui)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.11em", color: "var(--muted)", fontWeight: 700, marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <p style={{ fontFamily: "var(--font-ui)", fontSize: "10px", textTransform: "uppercase", letterSpacing: "0.11em", color: "var(--muted-foreground)", fontWeight: 700, marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <span style={{ display: "inline-block", width: 12, height: 2, background: "var(--amber)", borderRadius: 2 }} />
             Citizenship Form<Req />
           </p>
@@ -194,7 +194,7 @@ export default function StepOwnerInfo({ data, onChange, onNext, onBack, onSaveEx
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>3</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Owner &amp; Officer Information</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>One section per owner, officer, or partner. All must complete a citizenship form.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>One section per owner, officer, or partner. All must complete a citizenship form.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem" }}>
@@ -240,7 +240,7 @@ export default function StepOwnerInfo({ data, onChange, onNext, onBack, onSaveEx
         <div className="step-footer">
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
             <button type="button" onClick={onBack} className="btn-secondary">← Back</button>
-            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
+            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>

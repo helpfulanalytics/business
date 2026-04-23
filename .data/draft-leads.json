@@ -1,0 +1,50 @@
+{
+  "drafts": {
+    "89aeaa6f-f094-4d2f-9598-cf3831721a0c": {
+      "id": "89aeaa6f-f094-4d2f-9598-cf3831721a0c",
+      "step": 1,
+      "updatedAt": "2026-04-23T11:01:16.873Z",
+      "fullName": "",
+      "businessLegalName": "",
+      "tradeName": "",
+      "businessStructure": "",
+      "companyPhone": "",
+      "businessPhone": "",
+      "contactName": "nnn",
+      "contactTitle": "",
+      "contactPhone": "",
+      "contactEmail": "nnn",
+      "owners": [
+        {
+          "fullName": "",
+          "title": "",
+          "phone": "",
+          "email": ""
+        }
+      ]
+    },
+    "614c472b-a18c-41aa-ad06-a49f21eac95f": {
+      "id": "614c472b-a18c-41aa-ad06-a49f21eac95f",
+      "step": 1,
+      "updatedAt": "2026-04-23T11:03:40.468Z",
+      "fullName": "",
+      "businessLegalName": "",
+      "tradeName": "",
+      "businessStructure": "",
+      "companyPhone": "",
+      "businessPhone": "",
+      "contactName": "asdf",
+      "contactTitle": "",
+      "contactPhone": "",
+      "contactEmail": "asd",
+      "owners": [
+        {
+          "fullName": "",
+          "title": "",
+          "phone": "",
+          "email": ""
+        }
+      ]
+    }
+  }
+}

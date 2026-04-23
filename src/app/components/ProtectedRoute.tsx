@@ -14,9 +14,9 @@ export default function ProtectedRoute({ children }: { children: React.ReactNode
       const t = setTimeout(() => {
         try {
           const raw = localStorage.getItem("bl_session");
-          if (!raw) router.replace("/login");
+          if (!raw) router.replace("/");
         } catch {
-          router.replace("/login");
+          router.replace("/");
         }
       }, 50);
       return () => clearTimeout(t);

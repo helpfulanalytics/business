@@ -152,8 +152,8 @@ export default function HeroSection() {
             </div>
 
             {/* CTA button */}
-            <a href="/login" className="bg-white text-black px-6 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-gray-100">
-              Sign In
+            <a href="/apply/start" className="cta-glass">
+              Start your application
             </a>
           </nav>
         </div>
@@ -173,11 +173,8 @@ export default function HeroSection() {
 
               <FadeIn delay={1200} duration={1000}>
                 <div className="flex flex-wrap gap-4">
-                  <a href="/login" className="bg-white text-black px-8 py-3 rounded-lg font-medium transition-colors duration-200 hover:bg-gray-100">
-                    Sign In
-                  </a>
-                  <a href="/login?tab=register" className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200 hover:bg-white hover:text-black">
-                    Create Account
+                  <a href="/apply/start" className="cta-glass">
+                    Start your application
                   </a>
                 </div>
               </FadeIn>

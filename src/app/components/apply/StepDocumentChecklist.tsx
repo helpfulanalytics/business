@@ -48,7 +48,7 @@ function DocRow({ doc }: { doc: Doc }) {
       <span style={{ fontFamily: "var(--font-ui)", fontSize: "0.875rem", color: "var(--ink-2)", lineHeight: 1.5 }}>
         {doc.label}
         {doc.link && <> — <a href={doc.link} target="_blank" rel="noopener noreferrer" style={{ color: "var(--primary)", textDecoration: "none" }}>{doc.linkText}</a></>}
-        {doc.phone && <span style={{ color: "var(--muted)" }}> — Contact: {doc.phone}</span>}
+        {doc.phone && <span style={{ color: "var(--muted-foreground)" }}> — Contact: {doc.phone}</span>}
       </span>
     </div>
   );
@@ -71,7 +71,7 @@ export default function StepDocumentChecklist({ data, onChange, onNext, onBack, 
           <span style={{ width: 24, height: 24, borderRadius: "6px", background: "#eff6ff", border: "1px solid #c0d8ef", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: "11px", fontWeight: 700, color: "var(--primary)", flexShrink: 0 }}>5</span>
           <h2 className="font-display" style={{ fontSize: "1.2rem", fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>Required Documents Checklist</h2>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted)", marginLeft: "30px" }}>Gather these documents before submitting. This list is personalized to your application.</p>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: "0.825rem", color: "var(--muted-foreground)", marginLeft: "30px" }}>Gather these documents before submitting. This list is personalized to your application.</p>
       </div>
 
       <div style={{ padding: "1.5rem 2rem" }}>
@@ -105,7 +105,7 @@ export default function StepDocumentChecklist({ data, onChange, onNext, onBack, 
         {/* Submission info */}
         <div style={{ marginTop: "1.25rem", padding: "1rem 1.25rem", borderRadius: "8px", background: "#f8f9fb", border: "1px solid var(--border-lt)" }}>
           <p style={{ fontFamily: "var(--font-display), serif", fontSize: "0.875rem", fontWeight: 600, color: "var(--ink)", marginBottom: "0.625rem" }}>Submit Your Documents</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0.25rem", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)" }}>
             <span>Email: <a href="mailto:Revenue@cityofmobile.org" style={{ color: "var(--primary)", textDecoration: "none" }}>Revenue@cityofmobile.org</a></span>
             <span>Fax: 251.208.7954</span>
             <span>In-Person: 205 Government St, 2nd Floor South Tower, Mobile AL (Mon–Fri 8am–5pm)</span>
@@ -116,7 +116,7 @@ export default function StepDocumentChecklist({ data, onChange, onNext, onBack, 
         <div className="step-footer">
           <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
             <button type="button" onClick={onBack} className="btn-secondary">← Back</button>
-            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
+            <button type="button" onClick={onSaveExit} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-ui)", fontSize: "0.8rem", color: "var(--muted-foreground)", padding: "0.375rem 0" }}>Save &amp; Exit</button>
           </div>
           <button type="button" onClick={validate} className="btn-primary" style={{ padding: "0.625rem 1.75rem" }}>Continue →</button>
         </div>
